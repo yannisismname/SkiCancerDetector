@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Dermatology Scanner</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <div class="background-animation"></div>
+
+    <div class="app-wrapper">
+
+        <header>
+            <h1 class="title">SkinScan — AI Dermatology</h1>
+            <p class="subtitle">UPLOAD A DERMATOSCOPIC SCAN FOR RAPID  AI INSIGHT</p>
+        </header>
+
+        <main class="main-panel">
+            <section class="upload-area">
+                <div id="dropZone" class="drop-zone" tabindex="0">
+                    <div class="glow" aria-hidden="true"></div>
+                    <p class="drop-text">Drop Dermatoscopic Scan</p>
+                    <p class="hint-text">Clear, close-up image yields better results</p>
+                    <input type="file" id="imageInput" accept="image/*">
+                </div>
+
+                <div class="controls">
+                    <button id="browseBtn" class="btn btn-secondary">Browse</button>
+                    <button id="clearBtn" class="btn btn-tertiary">Clear</button>
+                    <button id="predictBtn" class="btn btn-primary large">
+                        <span class="btn-label">Scan & Analyze</span>
+                        <span class="btn-spinner hidden" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="preview-area">
+                <div class="preview-wrap">
+                    <canvas id="aiGrid" class="ai-grid"></canvas>
+                    <img id="preview" class="preview-img hidden" alt="Uploaded preview"/>
+                </div>
+
+                <div id="resultCard" class="result-card hidden">
+                    <div class="result-header">
+                        <h2>Diagnosis</h2>
+                        <span id="resultBadge" class="badge hidden"></span>
+                    </div>
+                    <div class="result-body">
+                        <div class="result-left">
+                            <div class="result-info">
+                                <p class="prediction-inline"><strong>Prediction:</strong>&nbsp;<span id="resultLabel" class="result-label-inline"></span></p>
+                                <p class="confidence-inline"><strong>Confidence:</strong>&nbsp;<span id="confidence" class="result-confidence-inline"></span></p>
+                            </div>
+                        </div>
+                        <div class="result-right"></div>
+                    </div>
+                    <div id="heatmapWrap" class="heatmap hidden"></div>
+                </div>
+
+                <p id="errorMsg" class="hidden error-msg"></p>
+            </section>
+        </main>
+
+    </div>
+    <!-- script already included with defer in head -->
+</body>
+</html>
