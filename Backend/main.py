@@ -8,7 +8,7 @@ import traceback
 
 app = FastAPI(title="Skin Cancer AI Backend API")
 
-# Configure logging
+# Configure logging``
 logging.basicConfig(level=logging.INFO, format="[%(asctime)s] %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
