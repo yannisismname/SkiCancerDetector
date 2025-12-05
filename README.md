@@ -19,7 +19,7 @@ From the `frontend` folder, it's best to run a simple static server. If you open
 
 ```powershell
 cd 'c:\Users\Lawrence Akosen\OneDrive\Desktop\Software engineering project\frontend'
-python -m http.server 5500
+python -m http.server 5000
 ```
 
 Then browse to: http://localhost:5500

@@ -10,11 +10,11 @@ const browseBtn = document.getElementById("browseBtn");
 const clearBtn = document.getElementById("clearBtn");
 const heatmapWrap = document.getElementById("heatmapWrap");
 
-// CLICK to upload
+
 dropZone.addEventListener("click", () => imageInput.click());
 if (browseBtn) browseBtn.addEventListener("click", () => imageInput.click());
 if (clearBtn) clearBtn.addEventListener("click", () => {
-    // reset UI
+    
     imageInput.value = null;
     preview.src = "";
     preview.classList.add("hidden");
@@ -23,9 +23,9 @@ if (clearBtn) clearBtn.addEventListener("click", () => {
     heatmapWrap.innerHTML = "";
     heatmapWrap.classList.add("hidden");
 });
-// explainBtn removed from UI — heatmapWrap retained for future use
 
-// DRAG & DROP functionality
+
+
 dropZone.addEventListener("dragover", (e) => {
     e.preventDefault();
     dropZone.style.background = "rgba(255,255,255,0.15)";
@@ -41,7 +41,7 @@ dropZone.addEventListener("drop", (e) => {
     showPreview();
 });
 
-// Show image preview
+
 imageInput.addEventListener("change", showPreview);
 
 function showPreview() {
@@ -52,25 +52,25 @@ function showPreview() {
     }
 }
 
-// Predict button with improved loading animation and button locking
+
 predictBtn.addEventListener("click", async () => {
     if (!imageInput.files[0]) {
         alert("Please upload an image first.");
         return;
     }
 
-    // UI prep
+    
     resultCard.classList.add("hidden");
     const errorMsg = document.getElementById("errorMsg");
     if (errorMsg) { errorMsg.classList.add("hidden"); errorMsg.textContent = ""; }
 
-    // set loading state on button
+   
     predictBtn.classList.add("loading");
     const spinner = predictBtn.querySelector('.btn-spinner');
     const label = predictBtn.querySelector('.btn-label');
     if (spinner) spinner.classList.remove('hidden');
     if (label) label.textContent = 'Analyzing...';
-    // disable other controls while running
+    
     browseBtn.disabled = true;
     clearBtn.disabled = true;
 
@@ -95,7 +95,7 @@ predictBtn.addEventListener("click", async () => {
 
         const data = await res.json();
 
-        // show results
+        
         resultCard.classList.remove("hidden");
         resultLabel.textContent = data.prediction ? data.prediction : 'Unknown';
         confidenceLabel.textContent = data.confidence !== undefined ? (data.confidence * 100).toFixed(2) + "%" : 'N/A';
@@ -117,7 +117,7 @@ predictBtn.addEventListener("click", async () => {
             alert("Could not contact the backend. Check DevTools console.\n" + err.message);
         }
     } finally {
-        // restore button state
+        
         predictBtn.classList.remove("loading");
         if (spinner) spinner.classList.add('hidden');
         if (label) label.textContent = 'Scan & Analyze';
